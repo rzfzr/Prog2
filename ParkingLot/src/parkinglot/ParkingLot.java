@@ -7,7 +7,7 @@ package parkinglot;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.time.LocalDateTime;
 /**
  *
  * @author rzfzr
@@ -99,8 +99,18 @@ public class ParkingLot {
                     if(sideSelection=='d'){
                         spotSelection +=12;
                     }
+                    System.out.println("Insert the car's plate: ");
+                    String plate;
+                    plate = scan.next();
                     
-                    listSpot.get(spotSelection).use();
+                    
+//                    System.out.println("Insert the time: ");
+//                    int time;
+//                    time=scan.nextInt();
+                    //now();
+                    
+                    
+                    listSpot.get(spotSelection).use(plate);
                 break;
                 case 2:
                     System.out.println("Choose a side: ");
@@ -108,16 +118,39 @@ public class ParkingLot {
                     
                     System.out.println("Choose a spot: ");
                     spotSelection = scan.nextInt();
-                    System.out.println("Vaga "+sideSelection+spotSelection);
+                    //System.out.println("Vaga "+sideSelection+spotSelection);
                     
                         spotSelection --;
                     if(sideSelection=='d'){
                         spotSelection +=12;
                     }
                     
-                    System.out.println("Vaga "+sideSelection+spotSelection);
-                    listSpot.get(spotSelection).use();
+                    System.out.println("Vaga "+sideSelection+(spotSelection+1));
+                    System.out.println("Placa = " + listSpot.get(spotSelection).carPlate);
+                    //listSpot.get(spotSelection).use();
                 break;
+                
+                case 3:
+                    System.out.println("Choose a side: ");
+                    sideSelection = scan.next().charAt(0);//pega a primeira char da linha
+                    
+                    System.out.println("Choose a spot: ");
+                    spotSelection = scan.nextInt();
+                    //System.out.println("Vaga "+sideSelection+spotSelection);
+                    
+                        spotSelection --;
+                    if(sideSelection=='d'){
+                        spotSelection +=12;
+                    }
+                    System.out.println("Insert the time: ");
+                    //time=scan.nextInt();
+                    System.out.println("Vaga "+sideSelection+(spotSelection+1));
+                    
+                    
+                    //listSpot.get(spotSelection).unUse(time);
+                    
+                    //System.out.println("Horas "+listSpot.get(spotSelection+1).calcHours());
+                    break;
             }
         } while(menuSelection != 0);
             
