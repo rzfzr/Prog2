@@ -6,6 +6,7 @@
 package parkinglot;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
 
 public class Spot {//vaga
 
@@ -20,8 +21,10 @@ public class Spot {//vaga
     String carPlate;
     //int enterTime;//horario padrao militar
     //int exitTime;//ex: 1205 = 12:05
-    LocalDateTime enterTime;
-    LocalDateTime exitTime;
+//    LocalDateTime enterTime;
+//    LocalDateTime exitTime;
+    int enterHour;
+    int exitHour;
 
     Spot() {
         isUsed = false;
@@ -29,6 +32,8 @@ public class Spot {//vaga
         id = 0;
         //car = new Car();
         carPlate = "";
+        enterHour = 0;
+        exitHour= 0;
 //        enterTime = 0;
 //        exitTime = 0;
     }
@@ -37,16 +42,21 @@ public class Spot {//vaga
 
         isUsed = true;
         carPlate = plate;
-        enterTime = LocalDateTime.now();
+        
+        enterHour= Calendar.HOUR_OF_DAY;
+//        enterTime = LocalDateTime.now();
         //enterTime = time;
     }
 
-    void unUse(int time) {//desocupa
-        isUsed = true;
+    void unUse() {//desocupa
+        isUsed = false;
         carPlate = "";
+        
+        
+        exitHour = Calendar.HOUR_OF_DAY;
         //exitTime = time;
-        exitTime = LocalDateTime.now();
-
+//        exitTime = LocalDateTime.now();
+calcHours();
     }
 
 //    String calcHours(){
@@ -76,17 +86,26 @@ public class Spot {//vaga
 //       return (resultHourS + resultMinuteS); 
 //    }
     int totalHours;
-    int cust = 0;
+    int cust = 4;
+    
+    void calcHours(){
+        totalHours= (exitHour-enterHour);
+        calcMoney();
+    }
 
     void calcMoney() {
-        while (totalHours > 2) {
-            totalHours--;
-            cust += 2;
+        while(totalHours>=1){
+            cust+=2;
         }
-        if (totalHours > 0) {
-            totalHours--;
-            cust += 4;
-        }
+        
+//        while (totalHours > 2) {
+//            totalHours--;
+//            cust += 2;
+//        }
+//        if (totalHours > 0) {
+//            totalHours--;
+//            cust += 4;
+//        }
     }
 
     String getSpotstate() {

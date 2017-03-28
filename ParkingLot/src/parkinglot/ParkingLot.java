@@ -54,9 +54,9 @@ public class ParkingLot {
                                      //listSpot get(0);
             System.out.println( 
                              "\n                Parking" + 
-                             "\n        [1] Add       " + "   __" +
-                             "\n        [2] Inspect   " + " _| #|_" +
-                             "\n        [3] Remove    " + "|o___o_|" +
+                             "\n        [1] Add       " + "   __    " + " 1 Hour = 4$" +
+                             "\n        [2] Inspect   " + " _| #|_  " + "   More = 2$" +
+                             "\n        [3] Remove    " + "|o___o_| " +
                              "\n        [0] Exit      " +
                              "\n  " +
                                      
@@ -127,6 +127,8 @@ public class ParkingLot {
                     
                     System.out.println("Vaga "+sideSelection+(spotSelection+1));
                     System.out.println("Placa = " + listSpot.get(spotSelection).carPlate);
+                    
+                    System.out.println("Hora de entrada = " + listSpot.get(spotSelection).enterHour);
                     //listSpot.get(spotSelection).use();
                 break;
                 
@@ -142,13 +144,20 @@ public class ParkingLot {
                     if(sideSelection=='d'){
                         spotSelection +=12;
                     }
-                    System.out.println("Insert the time: ");
+//                    System.out.println("Insert the time: ");
                     //time=scan.nextInt();
-                    System.out.println("Vaga "+sideSelection+(spotSelection+1));
+//                    System.out.println("Vaga "+sideSelection+(spotSelection+1));
                     
                     
-                    //listSpot.get(spotSelection).unUse(time);
+                    listSpot.get(spotSelection).unUse();
                     
+                    System.out.println("Hora de entrada = " + listSpot.get(spotSelection).enterHour);
+                    
+                    System.out.println("Hora de saida = " + listSpot.get(spotSelection).exitHour);
+                    
+                    System.out.println("Total de horas = " + listSpot.get(spotSelection).totalHours);
+                    
+                    System.out.println("Total em real = " + listSpot.get(spotSelection).cust);
                     //System.out.println("Horas "+listSpot.get(spotSelection+1).calcHours());
                     break;
             }
